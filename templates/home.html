@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<!-- {% load pwa %} -->
+  <head>
+    <!-- {% progressive_web_app_meta %} -->
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c51b273680.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="{% static 'css/master_css.css' %}">
+      <!-- <link href="{static 'js/staticworker.js'}">
+      <link rel="manifest" href="manifest.json"> -->
+  </head>
+  <style>
+  /* body{
+    display: block;
+    background-color: whitesmoke;
+
+  }
+  .container{
+    display: contents;
+  }
+  .jumbotron{
+    display: block;
+    background-color: blue;
+  } */
+  /* html,
+  body,
+  header,
+  #intro {
+      height: 100%;
+  }
+
+  #intro {
+      background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://besthqwallpapers.com/Uploads/16-5-2020/132669/stack-of-books-blue-background-education-concepts-books-library.jpg")no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  } */
+  </style>
+  <body>
+
+
+    <nav class="navbar navbar-expand-lg  navbar-light bg-light fixed-top scrolling-navbar navbar-toggler " id="#mainNav">
+                <div class="container" >
+                      <a class="navbar-brand" href="{% url 'index' %}" style="color:#ff5722;" >Home</a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                           <span class="navbar-toggler-icon"></span>
+                       </button>
+                      <div class="collapse navbar-collapse" id="basicExampleNav" >
+                        <ul class=" navbar-nav  mr-auto smooth-scroll " >
+                                <li class="nav-item">
+                                   <a class="nav-link" id="#navbarResponsive" href="{% url 'curriculum:standard_list' %}">Curriculum</a>
+                                </li>
+                                {% if user.is_superuser %}
+                                <li class="nav-item ">
+                                   <a class="nav-link" id="#navbarResponsive" href="{% url 'admin:index' %}">Admin</span> </a>
+                                </li>
+                                {%endif%}
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item  ">
+                                     <a class="nav-link" id="#navbarResponsive" href="{% url 'user_logout' %}">Logout</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item ">
+                                        <a class="nav-link" id="#navbarResponsive" href="{% url 'user_login' %}">Login</a>
+                                    </li>
+                                    <li class="nav-item " >
+                                       <a class="nav-link" id="#navbarResponsive" href="{% url 'register' %}">Register</span> </a>
+                                    </li>
+                                {% endif %}
+                                <li class="nav-item">
+                                  <a class="nav-link" id="#navbarResponsive" href="{% url 'contact' %}">Contact Us</a>
+                               </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" id="#navbarResponsive" href="{% url 'blog:blogs' %}">Announcements</a>
+                              </li>
+                                <!-- < <li class="nav-item">
+                                   <a class="nav-link" href="https://github.com/somvirs57/school_learning_management">GitHub</a>
+                                </li> -->
+                                <li class="nav-item">
+                                   <a class="nav-link" href="https://youtube.com/channel/UCHHGTvRA9Gfzc85YOTbDT2g">Youtube</a>
+                                </li>
+
+                                <li class="nav-item">
+                                   <a class="nav-link" href="https://studydais.learnyst.com/">Testseries</a>
+                                </li>
+
+                        </ul>
+                      </div>
+                </div>
+              </nav>
+              <header>
+              <div id="intro" class="container-fluid d-flex align-items-center justify-content-center h-100">
+                <div  class="row d-flex justify-content-center text-center">
+                  <div class="col-md-15 text-white">
+                    <h3 class="display-4 f white-text-bold  mb-2" style="color:#ff5722;">Studydais</h3>
+
+                    <hr style="color:#ff5722;">
+
+                    <h4 class="white-text">A complete Study Desk solution.</h4>
+                    <a href="{% url 'curriculum:standard_list' %}"><button type="button" class="button-10" style="color:#fff;height: fit-content"><p style="color:#FF5733">Lets Go<p></a>
+                </div>
+              </div>
+            </div>
+              <br/>
+
+          </header>
+
+
+    <!-- <div class="container">
+      <div class="jumbotron">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'register' %}">Register</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'user_logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'user_login' %}">Login</a>
+        {% endif %}
+        <a href="{% url 'admin:index' %}">admin</a>
+        <a href="{% url 'curriculum:standard_list' %}">standards</a>
+      <h1>This is Home page</h1> -->
+      {% block content %}
+
+      {% endblock %}
+      <footer class="page-footer" style="background-color:#b2ebf2;">
+      <div class="container">
+        <div class="row mt-4">
+                  <div class="col-md-4 mt-4">
+                            <h3>About Us</h3> <br>
+                            <h5>Welcome</h5>
+                            <p> Studydais is platform for conceptual learning with interactive interface designed to eliminate most of the problems faced by online learners. This platform is a result of extensive research, observations and discussions made over the year. It has been started to offer the learners with the quality they seek and provide them with relevant tests and test series to track their learning.
+<br/><br/><br/><strong>Our Aim</strong><br/> Our aim to help those scholars who are unable to access quality learning at affordable prices and make them enjoy their learning. Our objective is to revolutionize the process of learning and build a user friendly learning system where everyone can access hassle free learning.</p>
+                  </div>
+                  <div class="col-md-4 mt-4">
+                            <h3>Connect With Us</h3>
+                            <ul style="list-style-type:none">
+                              <li><a href="https://www.facebook.com/learnyst"><i class="fab fa-facebook-f material-icons"></i></a></li>
+                              <li><a href="https://instagram.com/study_dais?utm_medium=copy_link" style="color:pink;"><i class="fab fa-instagram material-icons "></i></a></li>
+                              <li><a href="https://youtube.com/channel/UCHHGTvRA9Gfzc85YOTbDT2g" style="color:#e62e00"><i class="fab fa-youtube material-icons "></i></a></li>
+                            </ul>
+                  </div>
+                  <div class="col-md-4 mt-4">
+                            <h3>Contact Us</h3>
+                            <ul>
+                              <li>Noida, Uttar Pradesh</li>
+                              <li>studydais.tsd@gmail.com</li>
+                              <li>+91-7270070009</li>
+                            </ul>
+                  </div>
+        </div>
+
+
+      <!-- <div class="fe_btn_tube align-items-center justify-content-center" >
+        <div class="row d-flex ">
+          <div class="col-md-10 text-white">
+
+            <div class="row d-flex mt-5 justify-content-center text-center">
+              <div class="col">
+                <a href="{% url 'contact' %}"> <button type="button" class="btn" style="color:#ff5722;border-color:#ff5722;">Send Feedback</button> </a>
+              </div>
+              <!<div class="col">
+                <a href="https://github.com/somvirs57/school_learning_management"> <button type="button" class="btn" style="color:#ff5722;border-color:#ff5722;"> Get on GitHub</button> </a>
+              </div> -->
+              <!-- <div class="col">
+                <a href="https://www.youtube.com/c/LearningBots"> <button type="button" class="btn" style="color:#ff5722;border-color:#ff5722;"> Subscribe on Youtube</button> </a>
+              </div>
+            </div>
+
+          </div>
+        </div> -->
+      <!-- </div> -->
+      <div class="footer-copyright text-center py-3">
+          <p>© 2020 Copyright: StudyDais.com</p>
+      </div>
+        </div>
+
+    </div>
+    </footer>
+      <!-- </div>
+    </div> -->
+
+    <!-- <script src="{% static 'quizes/main.js' %}" defer></script>
+    <script src="{% static 'quizes/quiz.js' %}" defer></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  </body>
+</html>
